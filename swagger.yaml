@@ -59,7 +59,7 @@ definitions:
       - platformId
     properties:
       plastformId:
-        type: integer
+        type: string
         description: Unique identifier representing a specific platform. 
       description:
         type: string
@@ -81,10 +81,10 @@ definitions:
       - domainId
     properties:
       domainId:
-        type: integer
+        type: string
         description: Unique identifier for the domain
       platformId:
-        type: integer
+        type: string
         description: Platform to which domain belongs
       description:
         type: string
@@ -103,13 +103,13 @@ definitions:
       - activationDate
     properties:
       accountId:
-        type: integer
+        type: string
         description: Unique identifier for the account
       domainId:
-        type: integer
+        type: string
         description: Domain to which the account belongs
       platformId:
-        type: integer
+        type: string
         description: Platform to which account belongs        
       owner: 
         type: string
