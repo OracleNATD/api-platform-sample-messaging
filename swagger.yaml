@@ -1,0 +1,162 @@
+swagger: "2.0"
+
+################################################################################
+#                              API Information                                 #
+################################################################################
+info:
+  version: 1.0.0
+  title: Web.com ESB Messaging
+  description: A sample API that accepts an HTTP POST with a JSON body (Swamp of POX). It has only one endpoint and the API details are defined in the JSON body. Can APIs be defined based on values in the HTTP body? Can governance and analytics be preformed based on these body values?
+  termsOfService: http://web.com/terms/
+  contact:
+    name: Web.com API Team
+    email: foo@web.com
+    url: http://web.com
+  license:
+    name: MIT
+    url: http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
+
+################################################################################
+#                  Host, Base Path, Schemes and Content Types                  #
+################################################################################    
+host: nodeapicontainer-gse00001975.apaas.em2.oraclecloud.com:80
+basePath: /
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+  
+
+################################################################################
+#                                           Paths                              #
+################################################################################  
+paths:
+  /messaging:
+    post:
+      description: Our swamp of POX. Response is based on the payload received.
+      parameters:
+        - name: action
+          in: body
+          #description: Could be anything
+          schema:
+            type: object
+            $ref: '#/definitions/Message'
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            $ref: '#/definitions/Account'                      
+
+################################################################################
+#                                 Definitions                                  #
+################################################################################
+definitions:
+  Platform:
+    required:
+      - platformId
+    properties:
+      plastformId:
+        type: integer
+        description: Unique identifier representing a specific platform. 
+      description:
+        type: string
+        description: Description of platform.
+      display_name:
+        type: string
+        description: Display name of platform.
+      capacity:
+        type: string
+        description: Capacity of platform. For example, 4 domains.  
+#      domains:
+#        type: array
+#        items: 
+#          $ref: '#/definitions/Domain'
+  Domain:
+    type: object
+    required:
+      - platformId
+      - domainId
+    properties:
+      domainId:
+        type: integer
+        description: Unique identifier for the domain
+      platformId:
+        type: integer
+        description: Platform to which domain belongs
+      description:
+        type: string
+        description: Description of platform.
+#      accounts:
+#        type: array
+#        items: 
+#          $ref: '#/definitions/Account'
+  Account:
+    type: object
+    required:
+      - platformId
+      - domainId    
+      - owner
+      - status
+      - activationDate
+    properties:
+      accountId:
+        type: integer
+        description: Unique identifier for the account
+      domainId:
+        type: integer
+        description: Domain to which the account belongs
+      platformId:
+        type: integer
+        description: Platform to which account belongs        
+      owner: 
+        type: string
+        description: Account owner
+      status:
+        type: string
+        description: Status of account
+      activationDate:
+        type: string
+        description: Date account was activated
+  Message:
+    type: object
+    required:
+      - clientInfo
+      - request
+    properties:
+      clientInfo:
+        type: object
+        required:
+          - apiAccessKey
+        properties:
+          apiAccessKey: 
+            type: string
+      request:
+        type: array
+        required:
+          - platformId
+          - action
+          - clientRequestId
+          - objectType
+          - data
+        properties:
+          platformId:
+            type: string
+          action:
+            type: string
+          clientRequestId:
+            type: string
+          objectType:
+            type: string
+          data:
+            type: object
+            required:
+              - domain
+              - accountId
+            properties:
+              domain:
+                type: string
+              accountId:
+                type: string
