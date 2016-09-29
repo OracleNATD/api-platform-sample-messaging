@@ -135,28 +135,32 @@ definitions:
             type: string
       request:
         type: array
+        items: 
+          $ref: '#/definitions/PlatformReq'
+  PlatformReq: 
+    type: object
+    required:
+      - platformId
+      - action
+      - clientRequestId
+      - objectType
+      - data
+    properties:
+      platformId:
+        type: string
+      action:
+        type: string
+      clientRequestId:
+        type: string
+      objectType:
+        type: string
+      data:
+        type: object
         required:
-          - platformId
-          - action
-          - clientRequestId
-          - objectType
-          - data
+          - domain
+          - accountId
         properties:
-          platformId:
+          domain:
             type: string
-          action:
+          accountId:
             type: string
-          clientRequestId:
-            type: string
-          objectType:
-            type: string
-          data:
-            type: object
-            required:
-              - domain
-              - accountId
-            properties:
-              domain:
-                type: string
-              accountId:
-                type: string
