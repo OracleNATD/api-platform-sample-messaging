@@ -19,10 +19,10 @@ info:
 ################################################################################
 #                  Host, Base Path, Schemes and Content Types                  #
 ################################################################################    
-host: nodeapicontainer-gse00001975.apaas.em2.oraclecloud.com:80
+host: nodeapicontainer-gse00001975.apaas.em2.oraclecloud.com
 basePath: /
 schemes:
-  - http
+  - https
 consumes:
   - application/json
 produces:
