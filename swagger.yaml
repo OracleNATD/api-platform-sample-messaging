@@ -26,7 +26,7 @@ schemes:
 consumes:
   - application/json
 produces:
-  - application/json
+  - application/json; charset=utf-8
   
 
 ################################################################################
