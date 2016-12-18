@@ -5,7 +5,7 @@ swagger: "2.0"
 ################################################################################
 info:
   version: 1.0.0
-  title: Web.com ESB Messaging
+  title: Level 1 ESB Messaging  
   description: A sample API that accepts an HTTP POST with a JSON body (Swamp of POX). It has only one endpoint and the API details are defined in the JSON body. Can APIs be defined based on values in the HTTP body? Can governance and analytics be preformed based on these body values?
   termsOfService: http://web.com/terms/
   contact:
